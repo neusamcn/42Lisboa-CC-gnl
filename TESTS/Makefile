@@ -6,7 +6,7 @@
 #    By: ncruz-ne <ncruz-ne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 17:11:21 by ncruz-ne          #+#    #+#              #
-#    Updated: 2025/12/06 17:47:31 by ncruz-ne         ###   ########.fr        #
+#    Updated: 2025/12/06 17:56:27 by ncruz-ne         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -44,6 +44,9 @@ EXE_DIR := $(TESTS_DIR)/exe
 MAIN_SRCS := $(wildcard $(TESTS_SRCS_DIR)/main*.c)
 MAIN_BASENAMES := $(notdir $(MAIN_SRCS:.c=))
 MAIN_OBJS := $(patsubst $(TESTS_SRCS_DIR)/%.c, $(TESTS_OBJS_DIR)/%.o, $(MAIN_SRCS))
+
+# Prevent make from treating test object files as intermediate and removing them
+.SECONDARY: $(MAIN_OBJS)
 
 # $(TESTS_DIR):
 # 	git clone --depth 1 --filter=blob:none --sparse \
