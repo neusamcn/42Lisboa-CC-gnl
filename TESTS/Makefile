@@ -66,8 +66,6 @@ $(EXE_DIR):
 	@cd ..
 	@echo "/$(EXE_DIR) created and valgrind_all.sh imported."
 
-#	import valgrind_all.sh 
-
 # Compile TESTS/srcs/%.c into TESTS/objs/%.o
 $(TESTS_OBJS_DIR)/%.o: $(TESTS_SRCS_DIR)/%.c | $(TESTS_OBJS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
